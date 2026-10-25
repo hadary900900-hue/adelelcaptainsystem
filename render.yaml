@@ -1,0 +1,27 @@
+services:
+  # Backend API Service
+  - type: web
+    name: erp-api
+    env: node
+    plan: free
+    buildCommand: pnpm install && pnpm --filter @erp/database db:generate && pnpm --filter @erp/shared build && pnpm --filter @erp/api build
+    startCommand: pnpm --filter @erp/database db:push && pnpm --filter @erp/api start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        value: "file:/data/prod.db"
+    disk:
+      name: erp-data
+      mountPath: /data
+      sizeGB: 1

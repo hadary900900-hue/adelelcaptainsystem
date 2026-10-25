@@ -1,0 +1,882 @@
+/* ==========================================================================
+   Helper ERP LUXURY MODERN THEME SYSTEM
+   Tailored for High-End Motorcycle & Automotive Dealership
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. COLOR PALETTES & THEME DEFINITIONS
+   -------------------------------------------------------------------------- */
+:root,
+/* ==========================================
+   1. Midnight Blue Theme
+   ========================================== */
+[data-theme="midnight-blue"] {
+  --primary: #eff2f7;
+  --primary-hover: #1D4ED8;
+  --primary-subtle: #EFF6FF;
+  --primary-gradient: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+  --accent: #F59E0B;
+  --accent-hover: #D97706;
+
+  --sidebar-bg: linear-gradient(180deg, #0a0a0a 0%, #02103bc0 100%);
+  --sidebar-header: #070D1E;
+  --sidebar-text: #94A3B8;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.06);
+  --sidebar-active-bg: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --sidebar-dropdown-bg: rgba(7, 13, 30, 0.45);
+
+  --content-bg: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --topbar-bg: rgba(255, 255, 255, 0.92);
+  --border-color: #E2E8F0;
+  --border-light: #F1F5F9;
+
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --table-header-bg: #0F172A;
+  --table-header-color: #F8FAFC;
+  --table-row-hover: #F8FAFC;
+
+  --badge-radius: 6px;
+  --card-radius: 14px;
+  --btn-radius: 8px;
+  --input-radius: 8px;
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 14px 34px -4px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================
+   2. Emerald Luxury Theme
+   ========================================== */
+[data-theme="emerald-luxury"] {
+  --primary: #059669;
+  --primary-hover: #047857;
+  --primary-subtle: #ECFDF5;
+  --primary-gradient: linear-gradient(135deg, #065F46 0%, #10B981 100%);
+  --accent: #EAB308;
+  --accent-hover: #CA8A04;
+
+  --sidebar-bg: linear-gradient(180deg, #06281E 0%, #0D3E30 100%);
+  --sidebar-header: #041B14;
+  --sidebar-text: #A7F3D0;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.07);
+  --sidebar-active-bg: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --sidebar-dropdown-bg: rgba(4, 27, 20, 0.45);
+
+  --content-bg: #F0FDF4;
+  --card-bg: #FFFFFF;
+  --topbar-bg: rgba(255, 255, 255, 0.95);
+  --border-color: #D1FAE5;
+  --border-light: #ECFDF5;
+
+  --text-main: #064E3B;
+  --text-muted: #047857;
+  --table-header-bg: #064E3B;
+  --table-header-color: #ECFDF5;
+  --table-row-hover: #F0FDF4;
+}
+
+/* ==========================================
+   3. Racing Crimson Theme
+   ========================================== */
+[data-theme="racing-crimson"] {
+  --primary: #DC2626;
+  --primary-hover: #B91C1C;
+  --primary-subtle: #FEF2F2;
+  --primary-gradient: linear-gradient(135deg, #991B1B 0%, #EF4444 100%);
+  --accent: #F97316;
+  --accent-hover: #EA580C;
+
+  --sidebar-bg: linear-gradient(180deg, #180505 0%, #2A0808 100%);
+  --sidebar-header: #100202;
+  --sidebar-text: #FECACA;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  --sidebar-dropdown-bg: rgba(16, 2, 2, 0.5);
+
+  --content-bg: #FAFAFA;
+  --card-bg: #FFFFFF;
+  --topbar-bg: rgba(255, 255, 255, 0.95);
+  --border-color: #FEE2E2;
+  --border-light: #FFF1F2;
+
+  --text-main: #18181B;
+  --text-muted: #71717A;
+  --table-header-bg: #7F1D1D;
+  --table-header-color: #FEF2F2;
+  --table-row-hover: #FFF1F2;
+}
+
+/* ==========================================
+   4. Dark Obsidian Theme
+   ========================================== */
+[data-theme="dark-obsidian"] {
+  --primary: #3B82F6;
+  --primary-hover: #60A5FA;
+  --primary-subtle: #1E293B;
+  --primary-gradient: linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
+  --accent: #F59E0B;
+  --accent-hover: #FBBF24;
+
+  --sidebar-bg: linear-gradient(180deg, #090D16 0%, #0F172A 100%);
+  --sidebar-header: #05070B;
+  --sidebar-text: #94A3B8;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --sidebar-dropdown-bg: rgba(0, 0, 0, 0.35);
+
+  --content-bg: #0B0F19;
+  --card-bg: #131A29;
+  --topbar-bg: rgba(19, 26, 41, 0.95);
+  --border-color: #1E293B;
+  --border-light: #162032;
+
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --table-header-bg: #1E293B;
+  --table-header-color: #F8FAFC;
+  --table-row-hover: #162032;
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Classic Silver Mode */
+[data-theme="silver"] {
+  --primary: #708090; /* Slate / Silver Gray */
+  --primary-hover: #546575;
+  --primary-subtle: #E2E8F0;
+  --primary-gradient: linear-gradient(135deg, #8A9EA7 0%, #B0C4DE 100%);
+  --accent: #4A5568;
+  --accent-hover: #2D3748;
+
+  --sidebar-bg: #1A202C; /* Dark Charcoal Slate */
+  --sidebar-header: #111827;
+  --sidebar-text: #E2E8F0;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: #4A5568;
+  --sidebar-dropdown-bg: rgba(0, 0, 0, 0.25);
+
+  --content-bg: #F8FAFC; /* Light Gray Clean Background */
+  --card-bg: #FFFFFF;
+  --topbar-bg: #FFFFFF;
+  --border-color: #E2E8F0;
+  --border-light: #EDF2F7;
+
+  --text-main: #1A202C;
+  --text-muted: #64748B;
+  --table-header-bg: #EDF2F7;
+  --table-header-color: #1A202C;
+  --table-row-hover: #F1F5F9;
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+}
+/* Bronze & Mocha Mode */
+[data-theme="bronzeMocha"] {
+  --primary: #C27803;
+  --primary-hover: #9B5E02;
+  --primary-subtle: #FDF6B2;
+  --primary-gradient: linear-gradient(135deg, #C27803 0%, #E3A008 100%);
+  --accent: #B45309;
+  --accent-hover: #92400E;
+
+  --sidebar-bg: #221C18;
+  --sidebar-header: #15110E;
+  --sidebar-text: #FDF8F5;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: #C27803;
+  --sidebar-dropdown-bg: rgba(0, 0, 0, 0.35);
+
+  --content-bg: #FAF8F5;
+  --card-bg: #FFFFFF;
+  --topbar-bg: #FFFFFF;
+  --border-color: #E8E2D9;
+  --border-light: #F3EFEA;
+
+  --text-main: #2A2421;
+  --text-muted: #786C65;
+  --table-header-bg: #F3EFEA;
+  --table-header-color: #2A2421;
+  --table-row-hover: #FAF8F5;
+  --shadow-card: 0 4px 20px -2px rgba(34, 28, 24, 0.07);
+}
+/* Soft Lavender Mode */
+[data-theme="lavender"] {
+  --primary: #8B5CF6;
+  --primary-hover: #7C3AED;
+  --primary-subtle: #F3E8FF;
+  --primary-gradient: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+  --accent: #6D28D9;
+  --accent-hover: #5B21B6;
+
+  --sidebar-bg: #1E1B2E;
+  --sidebar-header: #13111C;
+  --sidebar-text: #F3E8FF;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: #8B5CF6;
+  --sidebar-dropdown-bg: rgba(0, 0, 0, 0.3);
+
+  --content-bg: #F8F7FC;
+  --card-bg: #FFFFFF;
+  --topbar-bg: #FFFFFF;
+  --border-color: #E9E3F5;
+  --border-light: #F3E8FF;
+
+  --text-main: #2E2A3B;
+  --text-muted: #7C758E;
+  --table-header-bg: #F3E8FF;
+  --table-header-color: #2E2A3B;
+  --table-row-hover: #F8F7FC;
+  --shadow-card: 0 4px 20px -2px rgba(139, 92, 246, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   2. TYPOGRAPHY & BASE RESET
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--content-bg);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Arabic Typography Optimization */
+body[dir="rtl"],
+html[dir="rtl"] body {
+  font-family: 'Tajawal', 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  letter-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+body[dir="rtl"] h1,
+body[dir="rtl"] h2,
+body[dir="rtl"] h3,
+body[dir="rtl"] h4,
+body[dir="rtl"] h5,
+body[dir="rtl"] h6 {
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+/* --------------------------------------------------------------------------
+   3. MODERN APP LAYOUT & GLASS TOPBAR
+   -------------------------------------------------------------------------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: var(--content-bg);
+}
+
+.main-content {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--content-bg);
+}
+
+.topbar {
+  height: 68px;
+  background: var(--topbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  padding: 0 1.75rem;
+  z-index: 50;
+  position: sticky;
+  top: 0;
+  transition: all 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   4. LUXURY SIDEBAR STYLING
+   -------------------------------------------------------------------------- */
+.sidebar {
+  width: 275px;
+  background: var(--sidebar-bg);
+  color: #FFFFFF;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.12);
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  color: white !important;
+}
+
+body[dir="rtl"] .sidebar {
+  border-right: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar.collapsed {
+  width: 75px;
+}
+
+/* --------------------------------------------------------------------------
+   5. PREMIUM CARDS & CONTAINERS
+   -------------------------------------------------------------------------- */
+.card,
+.erp-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover,
+.erp-card:hover {
+  border-color: rgba(37, 99, 235, 0.25) !important;
+  box-shadow: 0 8px 26px -4px rgba(15, 23, 42, 0.08) !important;
+}
+
+.card-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 1rem 1.25rem !important;
+}
+
+.card-footer {
+  background-color: transparent !important;
+  border-top: 1px solid var(--border-color) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. HIGH-END TABLES
+   -------------------------------------------------------------------------- */
+.table {
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+  margin-bottom: 0 !important;
+}
+
+.table > thead {
+  background-color: var(--table-header-bg) !important;
+}
+
+.table > thead th {
+  background-color: var(--table-header-bg) !important;
+  color: var(--table-header-color) !important;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1rem !important;
+  border-bottom: none !important;
+  text-transform: uppercase;
+}
+
+body[dir="rtl"] .table > thead th {
+  letter-spacing: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.table > tbody > tr {
+  transition: background-color 0.15s ease;
+}
+
+.table > tbody > tr:hover {
+  background-color: var(--table-row-hover) !important;
+}
+
+.table > tbody td {
+  padding: 0.85rem 1rem !important;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. BUTTONS & CONTROLS
+   -------------------------------------------------------------------------- */
+.btn {
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: var(--btn-radius);
+  padding: 0.5rem 1.15rem;
+  transition: all 0.18s ease;
+  letter-spacing: -0.01em;
+}
+
+body[dir="rtl"] .btn {
+  letter-spacing: 0;
+}
+
+.btn-primary {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+  opacity: 0.93;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #059669 0%, #10B981 100%) !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   8. FORM INPUTS & SELECTS
+   -------------------------------------------------------------------------- */
+.form-control,
+.form-select {
+  font-family: inherit;
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  border-radius: var(--input-radius) !important;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.88rem;
+  transition: all 0.15s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+.input-group-text {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. BADGES & PILLS
+   -------------------------------------------------------------------------- */
+.badge {
+  font-weight: 600;
+  border-radius: var(--badge-radius);
+  padding: 0.35em 0.7em;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   10. SCROLLBAR CUSTOMIZATION
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   11. ANIMATIONS
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hover-bg-light:hover {
+  background-color: rgba(37, 99, 235, 0.04) !important;
+}
+
+/* --------------------------------------------------------------------------
+   12. LUXURY LOGIN PAGE EXPERIENCE
+   -------------------------------------------------------------------------- */
+.login-wrapper {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: #080D1A;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-brand-panel {
+  flex: 1.1;
+  background: linear-gradient(135deg, #09132B 0%, #111D3B 50%, #060A14 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3.5rem;
+  color: #FFFFFF;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body[dir="rtl"] .login-brand-panel {
+  border-right: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.login-brand-panel::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.login-brand-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -20%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.login-form-panel {
+  flex: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  background-color: #0E1626;
+  position: relative;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(19, 28, 48, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.login-box .form-control {
+  background-color: rgba(13, 20, 36, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #F8FAFC !important;
+  padding: 0.7rem 1rem;
+}
+
+.login-box .form-control:focus {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+}
+
+.login-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  margin-bottom: 0.85rem;
+  backdrop-filter: blur(8px);
+}
+[data-theme] .sidebar-active,
+[data-theme] .bg-primary {
+  background-color: var(--sidebar-active-bg) !important;
+  color: var(--sidebar-text) !important;
+}
+/* ==========================================
+   5. Global Fix for Sidebar Active & Hover States
+   ========================================== */
+[data-theme] .sidebar-link.active,
+[data-theme] .sidebar nav a.active,
+[data-theme] .sidebar .bg-primary,
+[data-theme] [class*="sidebar"] .bg-primary {
+  background: var(--sidebar-active-bg) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+[data-theme] .sidebar-link:hover:not(.active),
+[data-theme] .sidebar nav a:hover:not(.active) {
+  background: var(--sidebar-hover-bg) !important;
+}
+/* ==========================================
+   حل مشكلة خلفية الزر النشط للسايدبار
+   ========================================== */
+
+/* 1. إجبار العنصر النشط على أخذ خلفية الثيم الحالي */
+.sidebar-active,
+[data-theme] .sidebar-active {
+  background: var(--sidebar-active-bg) !important;
+  color: #ffffff !important;
+}
+
+/* 2. إذا كان هناك كلاس bg-primary يتداخل مع الكود */
+.sidebar-active.bg-primary,
+.bg-primary.sidebar-active {
+  background: var(--sidebar-active-bg) !important;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN — Mobile & Tablet Support
+   ========================================================================== */
+
+/* ---- Mobile Sidebar Overlay ---- */
+@media (max-width: 768px) {
+  .app-layout {
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Sidebar slides in as overlay on mobile */
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 270px !important;
+    z-index: 1030;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.3);
+  }
+
+  body[dir="ltr"] .sidebar {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar.open {
+    transform: translateX(0) !important;
+  }
+
+  /* Dark overlay behind sidebar on mobile */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1020;
+    backdrop-filter: blur(2px);
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  /* Main content takes full width on mobile */
+  .main-content {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* TopBar adjustments for mobile */
+  .topbar {
+    padding: 0 1rem;
+    height: 60px;
+  }
+
+  /* Tables become horizontally scrollable */
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Cards padding reduction */
+  .card-body,
+  .erp-card {
+    padding: 0.85rem !important;
+  }
+
+  /* Modal fullscreen on mobile */
+  .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100vw - 1rem) !important;
+  }
+
+  .modal-xl,
+  .modal-lg {
+    max-width: calc(100vw - 1rem) !important;
+  }
+
+  /* Page padding reduction */
+  main.p-4 {
+    padding: 1rem !important;
+  }
+
+  /* Hide text labels on action buttons to save space */
+  .btn-mobile-icon-only span.d-mobile-none {
+    display: none !important;
+  }
+
+  /* Stack row items on small screens */
+  .row-mobile-stack > .col,
+  .row-mobile-stack > [class^="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Hide non-essential columns in tables on mobile */
+  .table .col-hide-mobile {
+    display: none !important;
+  }
+
+  /* Stat cards — 2 columns on mobile */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Invoice print banner responsive */
+  .print-banner {
+    font-size: 0.72rem !important;
+  }
+}
+
+/* ---- Tablet (768px - 1024px) ---- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 220px !important;
+  }
+
+  .sidebar.collapsed {
+    width: 64px !important;
+  }
+
+  .topbar {
+    padding: 0 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  main.p-4 {
+    padding: 1.25rem !important;
+  }
+}
+
+/* ---- Large screens (1024px+) ---- */
+@media (min-width: 1025px) {
+  .sidebar {
+    position: relative !important;
+    transform: none !important;
+    width: 275px !important;
+  }
+
+  .sidebar.collapsed {
+    width: 75px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* ---- Common responsive utilities ---- */
+.w-100-mobile {
+  width: 100%;
+}
+
+/* Hamburger button — visible only on mobile */
+.sidebar-toggle-btn {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-main);
+    flex-shrink: 0;
+  }
+}
+
+/* Responsive font sizes */
+@media (max-width: 576px) {
+  .fs-responsive-sm {
+    font-size: 0.78rem !important;
+  }
+
+  h3.fw-bold {
+    font-size: 1.2rem !important;
+  }
+
+  .table {
+    font-size: 0.78rem !important;
+  }
+
+  .badge {
+    font-size: 0.68rem !important;
+  }
+}
+
+/* Fix overflow issues on all screens */
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+img, video, iframe, embed, object {
+  max-width: 100%;
+}
+
+/* Fix topbar on mobile for RTL + LTR */
+@media (max-width: 768px) {
+  .topbar .d-none.d-md-flex,
+  .topbar .d-none.d-md-block,
+  .topbar .d-none.d-lg-inline {
+    display: none !important;
+  }
+}

@@ -1,0 +1,43 @@
+# Multi-stage Dockerfile for Helper ERP Backend
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install pnpm & dependencies
+RUN npm install -g pnpm
+
+# Copy workspace configuration files
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json ./
+COPY packages/database/package.json ./packages/database/
+COPY packages/shared/package.json ./packages/shared/
+COPY apps/api/package.json ./apps/api/
+
+# Install all dependencies
+RUN pnpm install --frozen-lockfile
+
+# Copy source files
+COPY packages/ ./packages/
+COPY apps/api/ ./apps/api/
+
+# Generate Prisma Client & Build shared + api packages
+RUN pnpm --filter @erp/database db:generate
+RUN pnpm --filter @erp/shared build
+RUN pnpm --filter @erp/api build
+
+# Production Runner stage
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV API_HOST=0.0.0.0
+
+RUN npm install -g pnpm
+
+COPY --from=builder /app ./
+
+EXPOSE 3000
+
+# Push DB schema if needed and start the API
+CMD ["sh", "-c", "pnpm --filter @erp/database db:push && pnpm --filter @erp/api start"]

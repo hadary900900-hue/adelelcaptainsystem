@@ -1,0 +1,7 @@
+{
+  "title": "Dashboard",
+  "stats": {
+    "totalBranches": "Total Branches",
+    "totalWarehouses": "Total Warehouses"
+  }
+}

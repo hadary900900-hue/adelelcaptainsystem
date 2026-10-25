@@ -1,0 +1,227 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id           String   @id @default(uuid())
+  code         String   @unique
+  nameEn       String
+  nameAr       String
+  baseCurrency String   @default("EGP")
+  vatRate      Decimal  @default(14) @db.Decimal(5, 2)
+  country      String   @default("EG")
+  phone        String?
+  email        String?
+  address      String?
+  logo         String?
+  settings     Json     @default("{}")
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  branches Branch[]
+  roles    Role[]
+  users    User[]
+
+  @@map("organizations")
+}
+
+model Branch {
+  id             String   @id @default(uuid())
+  organizationId String
+  code           String
+  nameEn         String
+  nameAr         String
+  address        String?
+  phone          String?
+  email          String?
+  isHeadquarters Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  warehouses   Warehouse[]
+  userBranches UserBranch[]
+  auditLogs    AuditLog[]
+
+  @@unique([organizationId, code])
+  @@index([organizationId])
+  @@map("branches")
+}
+
+model Warehouse {
+  id        String   @id @default(uuid())
+  branchId  String
+  code      String
+  nameEn    String
+  nameAr    String
+  type      WarehouseType @default(MAIN)
+  address   String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  branch Branch @relation(fields: [branchId], references: [id], onDelete: Restrict)
+
+  @@unique([branchId, code])
+  @@index([branchId])
+  @@map("warehouses")
+}
+
+enum WarehouseType {
+  MAIN
+  SECONDARY
+  TRANSIT
+  SERVICE
+  RETURNS
+}
+
+model User {
+  id              String   @id @default(uuid())
+  organizationId  String
+  email           String   @unique
+  passwordHash    String
+  firstNameEn     String
+  lastNameEn      String
+  firstNameAr     String   @default("")
+  lastNameAr      String   @default("")
+  phone           String?
+  avatar          String?
+  preferredLang   String   @default("ar")
+  isActive        Boolean  @default(true)
+  lastLoginAt     DateTime?
+  passwordChangedAt DateTime?
+  resetToken      String?
+  resetTokenExp   DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization  Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  userRoles     UserRole[]
+  userBranches  UserBranch[]
+  refreshTokens RefreshToken[]
+  auditLogs     AuditLog[]     @relation("AuditUser")
+
+  @@index([organizationId])
+  @@index([email])
+  @@map("users")
+}
+
+model Role {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  nameAr         String   @default("")
+  description    String   @default("")
+  isSystem       Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization    Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  rolePermissions RolePermission[]
+  userRoles       UserRole[]
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+  @@map("roles")
+}
+
+model Permission {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  module      String
+  action      String
+  nameEn      String
+  nameAr      String   @default("")
+  description String   @default("")
+  createdAt   DateTime @default(now())
+
+  rolePermissions RolePermission[]
+
+  @@index([module])
+  @@map("permissions")
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  createdAt    DateTime @default(now())
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model UserRole {
+  userId    String
+  roleId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+  @@map("user_roles")
+}
+
+model UserBranch {
+  userId    String
+  branchId  String
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  branch Branch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+
+  @@id([userId, branchId])
+  @@map("user_branches")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String
+  tokenHash String   @unique
+  familyId  String
+  isRevoked Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, familyId])
+  @@index([tokenHash])
+  @@map("refresh_tokens")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  branchId   String?
+  entityType String
+  entityId   String?
+  action     String
+  beforeData Json?
+  afterData  Json?
+  ipAddress  String?
+  userAgent  String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  user   User?   @relation("AuditUser", fields: [userId], references: [id], onDelete: SetNull)
+  branch Branch? @relation(fields: [branchId], references: [id], onDelete: SetNull)
+
+  @@index([entityType, entityId])
+  @@index([userId])
+  @@index([branchId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

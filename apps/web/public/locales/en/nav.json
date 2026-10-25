@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "products": "Products Catalog",
+    "vehicles": "Vehicle Units (VIN)",
+    "spareParts": "Spare Parts",
+    "categories": "Categories",
+    "brands": "Brands & Models",
+    "inventory": "Stock & Balances",
+    "transfers": "Stock Transfers",
+    "adjustments": "Stock Adjustments",
+    "branches": "Branches",
+    "warehouses": "Warehouses",
+    "users": "Users",
+    "roles": "Roles",
+    "auditLogs": "Audit Logs",
+    "settings": "Settings"
+  },
+  "topbar": {
+    "logout": "Logout"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "appName": "نظام ERP",
+  "companyName": "السلام بايكس",
+  "actions": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف"
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "invalidEmail": "بريد إلكتروني غير صالح",
+    "minLength": "الحد الأدنى {{min}} أحرف"
+  }
+}
