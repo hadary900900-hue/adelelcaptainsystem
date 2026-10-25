@@ -14,11 +14,11 @@ export default function LoginPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: 'admin@elsalam.com',
-      password: 'Admin@123456'
+      email: '',
+      password: ''
     }
   });
 
@@ -41,11 +41,6 @@ export default function LoginPage() {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const fillQuickAccount = (email: string) => {
-    setValue('email', email);
-    setValue('password', 'Admin@123456');
   };
 
   return (
@@ -230,29 +225,6 @@ export default function LoginPage() {
               )}
             </button>
           </form>
-
-          {/* Quick Demo Access Bar */}
-          <div className="mt-4 pt-3 border-top border-white border-opacity-10 text-center">
-            <span className="text-light opacity-60 small d-block mb-2">تسجيل تجريبي سريع بضغطة زر:</span>
-            <div className="d-flex justify-content-center gap-2">
-              <button
-                type="button"
-                onClick={() => fillQuickAccount('admin@elsalam.com')}
-                className="btn btn-sm btn-outline-light py-1 px-2.5 opacity-75 hover-opacity-100"
-                style={{ fontSize: '0.75rem', borderColor: 'rgba(255,255,255,0.2)' }}
-              >
-                <i className="bi bi-person-check me-1"></i> مدير النظام (Admin)
-              </button>
-              <button
-                type="button"
-                onClick={() => fillQuickAccount('admin@erp.local')}
-                className="btn btn-sm btn-outline-light py-1 px-2.5 opacity-75 hover-opacity-100"
-                style={{ fontSize: '0.75rem', borderColor: 'rgba(255,255,255,0.2)' }}
-              >
-                <i className="bi bi-shield me-1"></i> الحساب الافتراضي
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
