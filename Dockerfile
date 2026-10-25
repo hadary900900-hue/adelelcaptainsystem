@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for Hugging Face Spaces & Cloud Hosting
+# Multi-stage Dockerfile for Northflank & Cloud Hosting
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -25,22 +25,17 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV PORT=7860
+ENV PORT=3000
 ENV API_HOST=0.0.0.0
 ENV DATABASE_URL="file:/app/packages/database/prisma/dev.db"
 
 RUN npm install -g pnpm
 
-# Create a non-root user (user ID 1000 required by Hugging Face)
-RUN adduser -D -u 1000 appuser && \
-    mkdir -p /app/packages/database/prisma && \
-    chown -R appuser:appuser /app
+RUN mkdir -p /app/packages/database/prisma
 
-COPY --from=builder --chown=appuser:appuser /app ./
+COPY --from=builder /app ./
 
-USER appuser
-
-EXPOSE 7860
+EXPOSE 3000
 
 # Push DB schema, run seed if not seeded, and start
 CMD ["sh", "-c", "pnpm --filter @erp/database db:push && node -e \"const { PrismaClient } = require('./packages/database/src/generated/client'); const p = new PrismaClient(); p.user.count().then(c => { if(c === 0) { console.log('Seeding initial data...'); require('child_process').execSync('pnpm --filter @erp/database db:seed', { stdio: 'inherit' }); } process.exit(0); });\" && pnpm --filter @erp/api start"]
