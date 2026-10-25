@@ -34,6 +34,17 @@ packages/database/prisma/migrations/**/migration_lock.toml
 # Turbo
 .turbo/
 
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+packages/database/prisma/*.db
+packages/database/prisma/*.db-journal
+
+# Prisma generated client
+packages/database/src/generated/
+
 # Testing
 coverage/
 
